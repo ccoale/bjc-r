@@ -5,13 +5,15 @@
     <script>
         function loadInfo() {
             alert("Hello");
-            $("#whois_info").load("http://www.whois.net/whois/microsoft.com");
+            $("whois_info").load("http://www.whois.net/whois/microsoft.com");
         }
+        
+        $("clickme").click(function() { loadInfo(); });
     </script>
 </head>
 
 <body>
-<button id="clickme" onClick="loadInfo();">Load whois info</button>
+<button id="clickme">Load whois info</button>
 <div id="whois_info" name="whois_info" class="whois_info">
 Loading...
 </div>

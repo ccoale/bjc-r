@@ -8,7 +8,9 @@
             $("whois_info").load("http://www.whois.net/whois/microsoft.com");
         }
         
-        $("clickme").click(function() { loadInfo(); });
+        $(document).ready(function() {
+            $("clickme").click(function() { loadInfo(); });
+            });
     </script>
 </head>
 

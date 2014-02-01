@@ -33,7 +33,7 @@ NOTE: The Apache server will be persistent across restarts.
   `sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist`
 
 ### Windows
-
+Coming soon.
 
 ## Contributing
 

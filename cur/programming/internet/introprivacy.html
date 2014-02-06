@@ -5,7 +5,71 @@
       charset=ISO-8859-1">
     <!-- put the following in exactly -->
     <script type="text/javascript" src="/bjc-r/admin/bjc-loader.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+
+
+    </script>
+    
     <title>Thoughts on Privacy</title>
+    <script>
+        var global_geoInfoObj = null;
+        var scriptEl = null;
+        
+        function _geoInfoLoader(data)
+        {
+            global_geoInfoObj = data;
+        }
+        
+        function getGeoInfo(field)
+        {
+            return global_geoInfoObj[field];
+        }
+        
+        function loadGeoInfoByIp(ip)
+        {
+            var url = "http://smart-ip.net/geoip-json/?callback=?";
+            if (ip != null)
+                url = "http://smart-ip.net/geoip-json/" + ip + "?callback=?";
+                
+            $.ajax({
+                url: url,
+                type: "GET",
+                async: false,
+                contentType: "application/json",
+                dataType: "jsonp",
+                success: function(data) { 
+                                        _geoInfoLoader(data); 
+                                        $("#user_ip_address").text(getGeoInfo("host")); 
+                                        $("#user_city_name").text(getGeoInfo("city"));
+                                        $("#user_region_name").text(getGeoInfo("region"));  
+                                        var map;
+                                        var mapOptions = {
+                                            zoom: 16,
+                                            center: new google.maps.LatLng(getGeoInfo("latitude"), getGeoInfo("longitude"))
+                                            };
+                                        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                                        //google.maps.event.addDomListener(window, 'load', initialize); 
+                                        
+                                        
+                                        }
+                });
+        }
+        
+        $(document).ready(function() {
+                loadGeoInfoByIp(null);
+            });
+            
+    </script>
+
+<style type="text/css">
+     #map-canvas {
+        width: 500px;
+        height: 500px;
+      }
+    </style>    
+
   </head>
   <body>
     <br>
@@ -88,6 +152,14 @@ href="http://www.theguardian.com/technology/interactive/2013/jun/12/what-is-meta
       <li>Discuss with your peers what consequences could arrise from
         having location and time metadata publicly available.</li>
     </ol>
+    <h3> Geolocation based on your IP address</h3>
+    The IP address that your ISP assigns to you contains information about your location. Let's take a look at <b>your</b> IP address: <span id='user_ip_address' name='user_ip_address'></span>.
+        <br/>
+        It seems that you're located in <span id="user_city_name"></span>, <span id="user_region_name"></span>. In fact, let's see if we can zoom in to your location
+        on a map!
+        <br/>
+        <div id="map-canvas" style="width: 800; height=400;"></div>
+    
     <h3>More on Privacy</h3>
     Try these two apps:<br>
     - <a target="new" href="http://panopticlick.eff.org/">Panopticlick</a><br>

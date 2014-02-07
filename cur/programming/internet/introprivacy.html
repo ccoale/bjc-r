@@ -59,6 +59,10 @@
         
         $(document).ready(function() {
                 loadGeoInfoByIp(null);
+                $("#go").click(function() {
+                      ip = $("#ip_address_input").val();
+                      loadGeoInfoByIp(ip);
+                      });
             });
             
     </script>
@@ -155,12 +159,13 @@ href="http://www.theguardian.com/technology/interactive/2013/jun/12/what-is-meta
     <h3> Geolocation based on your IP address</h3>
     The IP address that your ISP assigns to you contains information about your location called your "IP Address Geolocation". While it is not always accurate, it can sometimes be used to disclose your location and to track your travel habits. 
         <br/><br/> Let's take a look at <b>your</b> IP address: <span id='user_ip_address' name='user_ip_address'></span>.
+        <br/><br/> (Try another IP: <input type="text" id="ip_address_input" name="ip_address_input"></input> <button id="go" name="go">Go!</button>)
         <br/><br/>
         It seems that you're located in <b><span id="user_city_name"></span>, <span id="user_region_name"></span></b>. In fact, let's see if we can zoom in to your location on a map!
         <br/><br/>
         <div id="map-canvas" style="width: 800; height=400;"></div>
         <br/>
-        Unfortunately, it is possible for any website to track your general location using your "geolocation" whether you allow it or not. 
+        Unfortunately, it is possible for any website to track your general location using your "geolocation" whether you allow it or not.
     <br/>
     <h3>More on Privacy</h3>
     Try these two apps:<br>

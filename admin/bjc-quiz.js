@@ -34,6 +34,8 @@ function buildQuestions() {
 	
 	for (var i = 0; i < num; i++) {
 		var qdata = $(qdatas.get(i));
+		alert('hello world!');
+		qdata.css("background-image", 'url(/images/loading.gif)');
 		var location = $("<div></div>").insertAfter($(qdata));
 		if (qdata.attr("src")) {
 			var target = qdata.attr("src");

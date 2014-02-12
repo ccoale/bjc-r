@@ -34,8 +34,6 @@ function buildQuestions() {
 	
 	for (var i = 0; i < num; i++) {
 		var qdata = $(qdatas.get(i));
-		alert('hello world!');
-		qdata.css("background-image", 'url(/bjr-r/img/loading.gif)');
 		var location = $("<div></div>").insertAfter($(qdata));
 		if (qdata.attr("src")) {
 			var target = qdata.attr("src");
@@ -79,6 +77,7 @@ function buildQuestion(qdata, location, questionNum, fetched)  {
 	qdata = $(qdata).insertBefore(location);
 	console.log(qdata);
 	console.log(location);
+	qdata.css("background-image", "url(/bjc-r/img/loading.gif)");
 	var type = qdata.attr("type");
 	var question = getQInstance(type, qdata, location, questionNum);
 	question.loadContent();

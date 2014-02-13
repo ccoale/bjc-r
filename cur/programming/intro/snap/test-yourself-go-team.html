@@ -4,11 +4,11 @@
         <script type="text/javascript" src="/bjc-r/admin/bjc-loader.js"></script>
         <title>Test Yourself: Go Team!</title>
         
-        <style>
-            .loading-overly {
+        <style type="text/css">
+            div.loading-overly {
                 position: absolute;
                 background-image: url(/bjc/img/loading.gif);
-                background-size: 100%;
+                
                 width: 100%;
                 height: 100%;
             }
@@ -23,7 +23,7 @@
         hasinlinefeedback="true" maxchoices="1"
         responseIdentifier="ri" shuffle="true"
         >
-            <div class="loading-overlay"></div>
+            
             <div class="prompt">
                 <p>
                     Without trying this in <span class="snap">snap</span>, try to answer the following question:
@@ -95,6 +95,6 @@
                 <div class="correctResponse" identifier="c2"></div>
             </div>
         </div>
-
+        <div class="loading-overlay"></div>
     </body>
 </html>

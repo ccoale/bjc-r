@@ -9,7 +9,7 @@
 
     <body>
             <style type="text/css">
-            div.loading-overly {
+            #loading-overly {
                 position: absolute;
                 background-image: url(/bjc/img/loading.gif);
                 
@@ -22,9 +22,10 @@
 
         <div class="assessment-data" type="multiplechoice" identifier="goteam"
         hasinlinefeedback="true" maxchoices="1"
-        responseIdentifier="ri" shuffle="true"
+        responseIdentifier="ri" shuffle="true" style="position: relative;"
         >
             
+                    <div class="loading-overlay"></div>   
             <div class="prompt">
                 <p>
                     Without trying this in <span class="snap">snap</span>, try to answer the following question:
@@ -95,7 +96,6 @@
             <div class="responseDeclaration" identifier="ri">
                 <div class="correctResponse" identifier="c2"></div>
             </div>
-                    <div class="loading-overlay"></div>
         </div>
 
     </body>

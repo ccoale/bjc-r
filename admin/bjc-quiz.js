@@ -46,7 +46,6 @@ function buildQuestions() {
 	
 	// now, remove the purely data tags, how about?
 	$("div.assessment-data").remove();
-	$("div.loading-overlay").remove();
 	//$("div.responseDeclaration").remove();
 	
 }
@@ -70,6 +69,8 @@ function getRemoteQdata(target, location, questionNum) {
 function makeGetRemoteQdataCallback(location, questionNum) {
 	var callback = function(data, a, b) {
 		buildQuestion(data, location, questionNum, true);
+		
+	    $("div.loading-overlay").remove();
 	};
 	return callback;
 }

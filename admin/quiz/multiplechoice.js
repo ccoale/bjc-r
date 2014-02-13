@@ -3,9 +3,6 @@
 // TODO move MC-template into here as a string, oh well
 
 function MC(data, location, questionNumber) {
-
-    // stall for a while to test
-    for (i = 0; i < 0xffffffff; i++) { }
     
 	//data = data[0];
 	this.myClass = "MultipleChoice";

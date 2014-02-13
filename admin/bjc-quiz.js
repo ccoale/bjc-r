@@ -37,7 +37,6 @@ function buildQuestions() {
 		var location = $("<div></div>").insertAfter($(qdata));
 		if (qdata.attr("src")) {
 			var target = qdata.attr("src");
-			//getRemoteQdata(target, location, i);
 			doGetRemote(qdata, target, location, i);
 		} else {
 			buildQuestion(qdata, location, i, false);
@@ -47,12 +46,13 @@ function buildQuestions() {
 	
 	// now, remove the purely data tags, how about?
 	$("div.assessment-data").remove();
+	$("div.loading-overlay").remove();
 	//$("div.responseDeclaration").remove();
 	
 }
 
 function doGetRemote(qdata, target, location, questionNum) {
-    qdata.css("background-image", "url(/bjc-r/img/loading.gif)");
+    //qdata.css("background-image", "url(/bjc-r/img/loading.gif)");
     getRemoteQdata(target, location, questionNum);
 }
 
